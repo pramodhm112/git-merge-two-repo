@@ -10,7 +10,7 @@
 srepolink=$(echo $bbdcrepo | awk -F "https://" '{ print $2}')
 git clone https://${bbdcuser}:${bbdctoken}@${srepolink}
 
-fname=$(echo $bbdcrepo| awk -F "/"  '{ print $5}' | awk -F ".git" '{print $1}')
+fname=$(echo $bbdcrepo| awk -F "/"  '{ print $6}' | awk -F ".git" '{print $1}')
 
 cd $fname
 
