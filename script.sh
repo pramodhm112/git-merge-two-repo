@@ -14,8 +14,8 @@ fname=$(echo $bbdcrepo| awk -F "/"  '{ print $6}' | awk -F ".git" '{print $1}')
 echo $fname
 cd $fname
 
-#srepolink=$(echo $bbcrepo | sed "s/@/:{bbctoken}@/g")
-git remote add -f gcloud $bbcrepo
+srepolink=$(echo $bbcrepo | sed "s/@/:{bbctoken}@/g")
+git remote add -f gcloud $srepolink
 
 git branch -a > branches
 cat branches | tr -d "  " | tr -d "*" | sed s#remotes/##g > comparefile
