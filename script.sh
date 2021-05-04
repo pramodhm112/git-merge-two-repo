@@ -8,14 +8,14 @@
 #read -p "BB Cloud Repo     : " bbcrepo
 
 srepolink=$(echo $bbdcrepo | awk -F "https://" '{ print $2}')
-git clone https://${bbdcuser}:${bbdctoken}@${srepolink}
+git clone https://${srepolink}
 
 fname=$(echo $bbdcrepo| awk -F "/"  '{ print $6}' | awk -F ".git" '{print $1}')
-
+echo $fname
 cd $fname
 
-srepolink=$(echo $bbcrepo | sed "s/@/:{bbctoken}@/g")
-git remote add -f gcloud $srepolink
+#srepolink=$(echo $bbcrepo | sed "s/@/:{bbctoken}@/g")
+git remote add -f gcloud $bbcrepo
 
 git branch -a > branches
 cat branches | tr -d "  " | tr -d "*" | sed s#remotes/##g > comparefile
