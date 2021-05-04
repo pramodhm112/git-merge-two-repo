@@ -14,7 +14,7 @@ fname=$(echo $bbdcrepo| awk -F "/"  '{ print $6}' | awk -F ".git" '{print $1}')
 echo $fname
 cd $fname
 
-srepolink=$(echo $bbcrepo | sed "s/@/:{bbctoken}@/g")
+srepolink=$(echo $bbcrepo | sed "s/@/:${bbctoken}@/g")
 git remote add -f gcloud $srepolink
 
 git branch -a > branches
@@ -51,7 +51,7 @@ do
                 then
                         echo $i >> updatedbranches
                         git checkout --track origin/${i}
-                        git merge -f gcloud/${i} --allow-unrelated-histories
+                        git merge gcloud/${i} --allow-unrelated-histories
                 fi
         done
 done
