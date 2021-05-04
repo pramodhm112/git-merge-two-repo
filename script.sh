@@ -51,7 +51,7 @@ do
                 then
                         echo $i >> updatedbranches
                         git checkout --track origin/${i}
-                        git merge gcloud/${i} --allow-unrelated-histories
+                        git merge -f gcloud/${i} --allow-unrelated-histories
                 fi
         done
 done
